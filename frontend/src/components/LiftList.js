@@ -45,7 +45,7 @@ class LiftList extends Component {
                     ))}
                     <div className="column">
                         <button
-                            className="button"
+                            className={this.state.lift === null ? "button is-primary" : "button"}
                             onClick={this.resetEndpoint}
                         >All Lifts</button>
                     </div>
