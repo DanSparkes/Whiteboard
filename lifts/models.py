@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Movement(models.Model):
@@ -6,6 +7,9 @@ class Movement(models.Model):
 
 
 class Lift(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name="User", related_name="lifts"
+    )
     name = models.ForeignKey(
         Movement, on_delete=models.CASCADE, to_field="name", verbose_name="Lift Name"
     )
