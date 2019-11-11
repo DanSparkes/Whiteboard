@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Lifts from "./containers/Whiteboard/Lifts.js"
+import Lifts from "./Whiteboard/Lifts.js"
 
 const App = () => (
     <React.Fragment>

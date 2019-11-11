@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <title>The Lifts</title>
+</head>
+
+<body>
+    <section class="hero is-dark is-fullheight">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <div class="column is-4 is-offset-4">
+                    <h3 class="title has-text-white">Login</h3>
+                    <hr class="login-hr">
+                    <div class="box">
+                        <form method="post">
+                            {% csrf_token %}
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="text" placeholder="Your Username"
+                                        name={{ form.username.html_name }} autofocus="">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <input class="input is-large" type="password" placeholder="Your Password"
+                                        name={{ form.password.html_name }}>
+                                </div>
+                            </div>
+                            {% if form.errors %}
+                            {% for key, value in form.errors.items %}
+                            <div class="alert alert-danger" role="alert">
+                                {% if key != '__all__' %}{{ key }} - {% endif %}{{ value | striptags }}
+                            </div>
+                            {% endfor %}
+                            {% endif %}
+
+                            <button class="button is-block is-info is-large is-fullwidth" type="submit">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+{% load static %}
+
+
+</html>

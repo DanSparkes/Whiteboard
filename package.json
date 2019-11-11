@@ -4,16 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./whiteboard/frontend/src/index.js --output ./whiteboard/frontend/static/frontend/main.js",
-    "build": "webpack --mode production ./whiteboard/frontend/src/index.js --output ./whiteboard/frontend/static/frontend/main.js"
+    "dev": "webpack --mode development ./frontend/src/index.js --output ./frontend/static/frontend/main.js",
+    "build": "webpack --mode production ./frontend/src/index.js --output ./frontend/static/frontend/main.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.6.4",
-    "@babel/preset-env": "^7.6.3",
-    "@babel/preset-react": "^7.6.3",
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "prop-types": "^15.7.2",
@@ -25,5 +25,13 @@
   },
   "dependencies": {
     "react-select": "^3.0.8"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DanSparkes/Whiteboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DanSparkes/Whiteboard/issues"
+  },
+  "homepage": "https://github.com/DanSparkes/Whiteboard#readme"
 }
