@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Select from 'react-select';
+import axios from 'axios';
 
 class Form extends Component {
     static propTypes = {
@@ -33,11 +34,12 @@ class Form extends Component {
         let name = lift_name.label;
         const lift = { name, one_rep_max, fake_one_rep };
         const conf = {
-            method: "post",
-            body: JSON.stringify(lift),
             headers: new Headers({ "Content-Type": "application/json" })
         };
-        fetch(this.props.endpoint, conf).then(response => console.log(response));
+        axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
+        axios.defaults.xsrfCookieName = "XCSRF-TOKEN";
+        axios.defaults.withCredentials = true;
+        axios.post(this.props.endpoint, JSON.stringify(lift), conf).then(response => console.log(response));
         this.props.handler(name)
         this.props.closeFunc()
     };

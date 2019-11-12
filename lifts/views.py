@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
@@ -18,6 +20,10 @@ class LiftListCreate(generics.ListCreateAPIView):
         )[:10]
         serializer = LiftSerializer(queryset, many=True)
         return Response(serializer.data)
+
+    def perform_create(self, serializer):
+        lifter = get_object_or_404(User, id=self.request.user.id)
+        return serializer.save(user=lifter)
 
 
 class LiftList(generics.ListAPIView):
