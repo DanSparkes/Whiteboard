@@ -39,7 +39,7 @@ class Form extends Component {
         axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
         axios.defaults.xsrfCookieName = "XCSRF-TOKEN";
         axios.defaults.withCredentials = true;
-        axios.post(this.props.endpoint, JSON.stringify(lift), conf).then(response => console.log(response));
+        axios.post(this.props.endpoint, lift, conf).then(response => console.log(response));
         this.props.handler(name)
         this.props.closeFunc()
     };
