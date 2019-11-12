@@ -90,7 +90,7 @@ class Form extends Component {
                         </div>
                     </div>
                     <div className="control">
-                        <button type="submit" className="button is-info">
+                        <button type="submit" className="button is-link">
                             Submit
             </button>
                     </div>

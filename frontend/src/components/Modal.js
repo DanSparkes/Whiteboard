@@ -41,7 +41,7 @@ class ModalForm extends Component {
 
     afterOpenModal() {
         // references are now sync'd and can be accessed.
-        this.subtitle.style.color = '#f00';
+        this.subtitle.style.color = '#000';
     }
 
     closeModal() {
@@ -51,7 +51,7 @@ class ModalForm extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.openModal} className="button is-info">Record Lift</button>
+                <button onClick={this.openModal} className="button is-link">Record Lift</button>
 
                 <Modal
                     isOpen={this.state.modalIsOpen}
