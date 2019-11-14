@@ -32,7 +32,7 @@ class Form extends Component {
             fake_one_rep = weight * (1 + reps / 30);
         }
         let name = lift_name.label;
-        const lift = { name, one_rep_max, fake_one_rep };
+        const lift = { name, one_rep_max, fake_one_rep, weight, reps };
         const conf = {
             headers: new Headers({ "Content-Type": "application/json" })
         };

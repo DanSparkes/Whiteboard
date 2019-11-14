@@ -8,7 +8,15 @@ from lifts.models import Movement
 class LiftSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lift
-        fields = ("id", "name", "one_rep_max", "fake_one_rep", "created_at")
+        fields = (
+            "id",
+            "name",
+            "weight",
+            "reps",
+            "one_rep_max",
+            "fake_one_rep",
+            "created_at",
+        )
 
     def __init__(self, *args, **kwargs):
         super(LiftSerializer, self).__init__(*args, **kwargs)
