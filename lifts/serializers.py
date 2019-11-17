@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from rest_framework.fields import SerializerMethodField
 
-from lifts.models import Lift
-from lifts.models import Movement
+from lifts.models import Lift, Movement, WOD, WodType, Exercise, RepScheme
 
 
 class LiftSerializer(serializers.ModelSerializer):
@@ -47,5 +46,62 @@ class LiftSerializer(serializers.ModelSerializer):
 class MovementSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movement
-        fields = "__all__"
-        read_only_fields = [f.name for f in Movement._meta.get_fields()]
+        fields = "name"
+        read_only_fields = "name"
+
+
+class ExerciseSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Exercise
+        fields = "name"
+        read_only_fields = "name"
+
+
+class WodTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = WodType
+        fields = "name"
+        read_only_fields = "name"
+
+
+class RepSchemeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RepScheme
+        fields = ("exercise", "reps", "weight")
+
+
+class WODSerializer(serializers.ModelSerializer):
+    exercises = RepSchemeSerializer(many=True)
+
+    class Meta:
+        model = WOD
+        fields = (
+            "name",
+            "wod_type",
+            "rounds",
+            "notes",
+            "rep_score",
+            "time_score",
+            "notes",
+            "exercises",
+            "created_at",
+        )
+
+    def __init__(self, *args, **kwargs):
+        super(WODSerializer, self).__init__(*args, **kwargs)
+
+        if "labels" in self.fields:
+            raise RuntimeError(
+                "You cant have labels field defined while using LiftSerializer"
+            )
+
+        self.fields["labels"] = SerializerMethodField()
+
+    def get_labels(self, *args):
+        labels = {}
+
+        for field in self.Meta.model._meta.get_fields():
+            if field.name in self.fields:
+                labels[field.name] = field.verbose_name
+
+        return labels

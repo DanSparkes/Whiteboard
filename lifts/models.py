@@ -1,8 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from utils import WorkoutTypes
-
 
 class Movement(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Lift Name")
@@ -26,18 +24,36 @@ class Lift(models.Model):
 
 class Exercise(models.Model):
     name = models.CharField(max_length=100, unique=True, verbose_name="Exercise Name")
-    has_weight = models.BooleanField(default=False)
+
+
+class WodType(models.Model):
+    name = models.CharField(max_length=50, unique=True, verbose_name="WOD Type")
 
 
 class WOD(models.Model):
-
-    name = models.CharField(max_length=100, unique=True, verbose_name="WOD Name")
-    wod_type = models.IntegerField(
-        choices=WorkoutTypes.choices(), default=WorkoutTypes.FOR_TIME
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name="User", related_name="wods"
     )
-    exercises = models.ManyToManyField(Exercise)
+    name = models.CharField(max_length=100, unique=True, verbose_name="WOD Name")
+    wod_type = models.ForeignKey(
+        WodType, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Type"
+    )
     rounds = models.IntegerField(default=1)
-    notes = models.CharField(max_length=500, blank=True, null=True)
+    rep_score = models.IntegerField(blank=True, null=True, verbose_name="Score")
+    time_score = models.DurationField(blank=True, null=True, verbose_name="Score")
+    notes = models.TextField(blank=True, null=True, verbose_name="Notes")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date Set")
 
-    def get_customer_type_label(self):
-        return WorkoutTypes(self.wod_type).name.title()
+
+class RepScheme(models.Model):
+    exercise = models.ForeignKey(
+        Exercise,
+        on_delete=models.CASCADE,
+        to_field="name",
+        verbose_name="Exercise Name",
+    )
+    wod = models.ForeignKey(
+        WOD, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Name"
+    )
+    reps = models.IntegerField(verbose_name="Reps")
+    weight = models.IntegerField(blank=True, null=True, verbose_name="Weight Lifted")

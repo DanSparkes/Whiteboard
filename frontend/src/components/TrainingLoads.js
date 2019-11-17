@@ -33,6 +33,7 @@ class TrainingLoads extends Component {
                 <div className="level">
                     <h2 className="title level-item">Training Loads</h2>
                 </div>
+                <hr />
                 <div className="level">
                     <div className="level-left">
                         <div className="level-item has-text-centered">
@@ -54,6 +55,7 @@ class TrainingLoads extends Component {
                 <div className="level">
                     {training_weights}
                 </div>
+                <hr />
             </div> : null;
         return (
             <div>{training_loads}</div>

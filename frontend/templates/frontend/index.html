@@ -11,37 +11,39 @@
 </head>
 
 <body>
-    <nav class="navbar is-white topNav">
-        <div class="container">
-            <div class="navbar-brand">
-                <h1 class="title">Lift Smarter Get Stronger!</h1>
-            </div>
-            <div id="topNav" class="navbar-menu">
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        <div class="field is-grouped">
-                            <p class="control">
-                                <span class="icon">
-                                    <i class="fa fa-dumbbell"></i>
-                                </span>
-                                <span>
-                                    {{user.get_username}}
-                                </span>
-                            </p>
-                            <p class="control">
-                                <a class="button is-small is-link is-outlined" href={% url 'logout' %}>
+    <div class="hero-head">
+        <nav class="navbar topNav">
+            <div class="container">
+                <div class="navbar-brand">
+                    <h1 class="title is-1 has-text-white">Lift Smarter Get Stronger!</h1>
+                </div>
+                <div id="topNav" class="navbar-menu">
+                    <div class="navbar-end">
+                        <div class="navbar-item">
+                            <div class="field is-grouped">
+                                <p class="control">
                                     <span class="icon">
-                                        <i class="fa fa-user"></i>
+                                        <i class="fa fa-dumbbell"></i>
                                     </span>
-                                    <span>Logout</span>
-                                </a>
-                            </p>
+                                    <span>
+                                        {{user.get_username}}
+                                    </span>
+                                </p>
+                                <p class="control">
+                                    <a class="button is-small is-link is-outlined" href={% url 'logout' %}>
+                                        <span class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </span>
+                                        <span>Logout</span>
+                                    </a>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
     <section class="section">
         <div class="container">
             <div id="app" class="columns">

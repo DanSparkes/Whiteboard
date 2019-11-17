@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from lifts.views import LiftListCreate, MovementList, LiftList
+from lifts.views import LiftListCreate, MovementList, LiftList, WODListCreate
 from frontend.views import index
 
 urlpatterns = [
@@ -26,4 +26,5 @@ urlpatterns = [
     re_path(r"api/lifts/(?P<liftname>[\w|\W]+)/$", LiftList.as_view()),
     path("api/movements/", MovementList.as_view()),
     path("", index),
+    path("api/wods/", WODListCreate.as_view()),
 ]
