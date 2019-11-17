@@ -43,7 +43,7 @@ admin.site.register(WodType, WodTypeAdmin)
 
 
 class WODAdmin(admin.ModelAdmin):
-    list_display = ["user", "name", "rep_score", "time_score"]
+    list_display = ["user", "name"]
 
 
 admin.site.register(WOD, WODAdmin)

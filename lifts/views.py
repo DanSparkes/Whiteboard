@@ -50,7 +50,7 @@ class MovementList(generics.ListAPIView):
 class WODListCreate(generics.ListCreateAPIView):
     queryset = WOD.objects.all().order_by("-created_at")
     serializer_class = WODSerializer
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
 
     def list(self, request):
         queryset = (
@@ -60,5 +60,5 @@ class WODListCreate(generics.ListCreateAPIView):
         return Response(serializer.data)
 
     def perform_create(self, serializer):
-        athlete = get_object_or_404(User, id=self.request.user.id)
+        athlete = get_object_or_404(User, id=1)
         return serializer.save(user=athlete)

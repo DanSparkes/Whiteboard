@@ -71,7 +71,7 @@ class RepSchemeSerializer(serializers.ModelSerializer):
 
 
 class WODSerializer(serializers.ModelSerializer):
-    exercises = RepSchemeSerializer(many=True)
+    exercises = RepSchemeSerializer(source="repscheme_set", many=True)
 
     class Meta:
         model = WOD
@@ -79,9 +79,6 @@ class WODSerializer(serializers.ModelSerializer):
             "name",
             "wod_type",
             "rounds",
-            "notes",
-            "rep_score",
-            "time_score",
             "notes",
             "exercises",
             "created_at",
@@ -105,3 +102,13 @@ class WODSerializer(serializers.ModelSerializer):
                 labels[field.name] = field.verbose_name
 
         return labels
+
+    def create(self, validated_data):
+        exercises_data = validated_data.pop("exercises")
+        import pdb
+
+        pdb.set_trace()
+        wod = WOD.objects.create(**validated_data)
+        for exercise_data in exercises_data:
+            RepScheme.objects.create(wod=wod, **exercise_data)
+        return wod
