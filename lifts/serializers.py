@@ -104,11 +104,17 @@ class WODSerializer(serializers.ModelSerializer):
         return labels
 
     def create(self, validated_data):
-        exercises_data = validated_data.pop("exercises")
-        import pdb
-
-        pdb.set_trace()
+        exercises_data = validated_data.pop("repscheme_set")
         wod = WOD.objects.create(**validated_data)
         for exercise_data in exercises_data:
             RepScheme.objects.create(wod=wod, **exercise_data)
+        new_exercises = RepScheme.objects.filter(wod=wod)
+
+        existing_wods = WOD.objects.all()
+        for old_wod in existing_wods:
+            exercises = RepScheme.objects.filter(wod=old_wod)
+            # TODO this part doesn't work the way I want it to...
+            if exercises == new_exercises:
+                wod.delete()
+                return old_wod
         return wod

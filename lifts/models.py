@@ -72,9 +72,9 @@ class RepScheme(models.Model):
     weight = models.IntegerField(blank=True, null=True, verbose_name="Weight Lifted")
 
 
-class WodScore(models.Model):
-    wod = models.ForeignKey(
-        WOD, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Name"
-    )
-    rep_score = models.IntegerField(blank=True, null=True, verbose_name="Score")
-    time_score = models.DurationField(blank=True, null=True, verbose_name="Score")
+# class WodScore(models.Model):
+#     wod = models.ForeignKey(
+#         WOD, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Name"
+#     )
+#     rep_score = models.IntegerField(blank=True, null=True, verbose_name="Score")
+#     time_score = models.DurationField(blank=True, null=True, verbose_name="Score")
