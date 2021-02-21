@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": "/home/dan/.local/share/virtualenvs/whiteboard-EpYLJ4bW/bin/python",
-    "python.formatting.provider": "black"
+  "python.pythonPath": "~/.virtualenvs/whiteboard/bin/python",
+  "python.formatting.provider": "black"
 }

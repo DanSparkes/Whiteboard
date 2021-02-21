@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('lifts', '0001_initial'),
+        ('whiteboard', '0001_initial'),
     ]
 
     operations = [
@@ -21,6 +21,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='lift',
             name='name',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='lifts.Movement'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='whiteboard.Movement'),
         ),
     ]

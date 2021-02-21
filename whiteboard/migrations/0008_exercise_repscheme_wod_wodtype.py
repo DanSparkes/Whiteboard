@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('lifts', '0007_auto_20191112_0152'),
+        ('whiteboard', '0007_auto_20191112_0152'),
     ]
 
     operations = [
@@ -38,7 +38,7 @@ class Migration(migrations.Migration):
                 ('notes', models.TextField(blank=True, null=True, verbose_name='Notes')),
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Date Set')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='wods', to=settings.AUTH_USER_MODEL, verbose_name='User')),
-                ('wod_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='lifts.WodType', to_field='name', verbose_name='WOD Type')),
+                ('wod_type', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='whiteboard.WodType', to_field='name', verbose_name='WOD Type')),
             ],
         ),
         migrations.CreateModel(
@@ -47,8 +47,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('reps', models.IntegerField(verbose_name='Reps')),
                 ('weight', models.IntegerField(blank=True, null=True, verbose_name='Weight Lifted')),
-                ('exercise', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='lifts.Exercise', to_field='name', verbose_name='Exercise Name')),
-                ('wod', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='lifts.WOD', to_field='name', verbose_name='WOD Name')),
+                ('exercise', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='whiteboard.Exercise', to_field='name', verbose_name='Exercise Name')),
+                ('wod', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='whiteboard.WOD', to_field='name', verbose_name='WOD Name')),
             ],
         ),
     ]

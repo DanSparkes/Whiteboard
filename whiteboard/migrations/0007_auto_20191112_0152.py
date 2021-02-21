@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('lifts', '0006_lift_user'),
+        ('whiteboard', '0006_lift_user'),
     ]
 
     operations = [

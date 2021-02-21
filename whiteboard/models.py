@@ -43,19 +43,11 @@ class WodType(models.Model):
 
 
 class WOD(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, verbose_name="User", related_name="wods"
-    )
     name = models.CharField(max_length=100, unique=True, verbose_name="WOD Name")
     wod_type = models.ForeignKey(
         WodType, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Type"
     )
     rounds = models.IntegerField(default=1)
-    notes = models.TextField(blank=True, null=True, verbose_name="Notes")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date Set")
-
-    def __str__(self):
-        return self.name
 
 
 class RepScheme(models.Model):
@@ -65,16 +57,27 @@ class RepScheme(models.Model):
         to_field="name",
         verbose_name="Exercise Name",
     )
+    reps = models.IntegerField(verbose_name="Reps")
+    wod = models.ForeignKey(
+        WOD, on_delete=models.CASCADE, to_field="id", verbose_name="WOD Name"
+    )
+
+
+class RepWeight(models.Model):
+    rep_scheme = models.ForeignKey(
+        RepScheme, on_delete=models.CASCADE, verbose_name="Rep Scheme"
+    )
+    weight = models.IntegerField(verbose_name="Weight")
+
+
+class WodScore(models.Model):
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, verbose_name="User", related_name="wods"
+    )
     wod = models.ForeignKey(
         WOD, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Name"
     )
-    reps = models.IntegerField(verbose_name="Reps")
-    weight = models.IntegerField(blank=True, null=True, verbose_name="Weight Lifted")
-
-
-# class WodScore(models.Model):
-#     wod = models.ForeignKey(
-#         WOD, on_delete=models.CASCADE, to_field="name", verbose_name="WOD Name"
-#     )
-#     rep_score = models.IntegerField(blank=True, null=True, verbose_name="Score")
-#     time_score = models.DurationField(blank=True, null=True, verbose_name="Score")
+    rep_score = models.IntegerField(blank=True, null=True, verbose_name="Score")
+    time_score = models.DurationField(blank=True, null=True, verbose_name="Score")
+    notes = models.TextField(blank=True, null=True, verbose_name="Notes")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date Set")

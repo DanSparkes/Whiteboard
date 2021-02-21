@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from lifts.models import Lift, Movement, Exercise, WodType, WOD, RepScheme
+from whiteboard.models import Lift, Movement, Exercise, WodType, WOD, RepScheme, RepWeight
 
 
 class LiftAdmin(admin.ModelAdmin):
@@ -43,14 +43,25 @@ admin.site.register(WodType, WodTypeAdmin)
 
 
 class WODAdmin(admin.ModelAdmin):
-    list_display = ["user", "name"]
+    list_display = [
+        "name",
+        "wod_type",
+    ]
 
 
 admin.site.register(WOD, WODAdmin)
 
 
 class RepSchemeAdmin(admin.ModelAdmin):
-    list_display = ["exercise", "wod", "reps", "weight"]
+    list_display = ["exercise", "wod", "reps"]
 
 
 admin.site.register(RepScheme, RepSchemeAdmin)
+
+
+class RepWeightAdmin(admin.ModelAdmin):
+    list_display = ["rep_scheme", "weight"]
+
+
+admin.site.register(RepWeight, RepWeightAdmin)
+
