@@ -1,0 +1,15 @@
+version: "3"
+services:
+  web:
+    build: .
+    restart: always
+    volumes:
+      - $PWD:/deploy/code
+    command: python3 /deploy/code/manage.py runserver 0.0.0.0:8080
+    environment:
+      - DJANGO_SETTINGS_MODULE=whiteboard.settings
+      - APP_ENV=local
+    ports:
+      - "80:8080"
+      - "443:443"
+      - "5679:5679"
