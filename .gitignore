@@ -91,6 +91,8 @@ env.bak/
 venv.bak/
 .env.*
 
+*.pyc
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -105,6 +107,12 @@ venv.bak/
 .mypy_cache/
 
 node_modules
+.coverage
+
+test-reports
+test-coverage
+test-frontend-coverage
 
 whiteboard/static*
 conf/etc/ssl*
+whiteboard/fixtures/lifts.json

@@ -23,9 +23,7 @@ class LiftListCreate(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated,)
 
     def list(self, request):
-        queryset = (
-            self.get_queryset().filter(user=request.user).order_by("-created_at")
-        )[:10]
+        queryset = self.get_queryset().filter(user=request.user).order_by("-created_at")
         serializer = LiftSerializer(queryset, many=True)
         return Response(serializer.data)
 
@@ -44,7 +42,7 @@ class LiftList(generics.ListAPIView):
             self.get_queryset()
             .filter(name__name__exact=liftname, user=request.user)
             .order_by("-created_at")
-        )[:10]
+        )
         serializer = LiftSerializer(queryset, many=True)
         return Response(serializer.data)
 

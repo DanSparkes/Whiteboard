@@ -21,9 +21,11 @@ from whiteboard.views import LiftListCreate, MovementList, LiftList, index
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", index),
+    path("", index, name="home"),
     path("accounts/", include("django.contrib.auth.urls")),
-    path("api/lifts/", LiftListCreate.as_view()),
-    re_path(r"api/lifts/(?P<liftname>[\w|\W]+)/$", LiftList.as_view()),
-    path("api/movements/", MovementList.as_view()),
+    path("api/lifts/", LiftListCreate.as_view(), name="lift_list"),
+    re_path(
+        r"api/lifts/(?P<liftname>[\w|\W]+)/$", LiftList.as_view(), name="single_lift"
+    ),
+    path("api/movements/", MovementList.as_view(), name="movement_list"),
 ]

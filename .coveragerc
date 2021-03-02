@@ -12,6 +12,7 @@ omit =
     documents/*
     eb_deployments/*
     virtualenvs/*
+    whiteboard/wsgi.py
 
 
 [report]
