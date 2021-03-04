@@ -12,6 +12,7 @@ class LiftList extends Component {
     this.state = {
       lift: null,
       endpoint: "api/lifts/",
+      max: 0,
     };
   }
   static propTypes = {
@@ -19,6 +20,7 @@ class LiftList extends Component {
   };
 
   handleChange = (e) => {
+    this.setState({ max: 0 });
     this.setState({ lift: e.target.value });
     this.setState({ endpoint: "api/lifts/" + e.target.value });
   };
@@ -31,6 +33,14 @@ class LiftList extends Component {
   liftHandler = (lift) => {
     this.setState({ lift: lift });
     this.setState({ endpoint: "api/lifts/" + lift });
+  };
+
+  maxLiftSetter = (lift) => {
+    if (lift["fake_one_rep"] > 0) {
+      this.setState({ max: lift["fake_one_rep"] });
+    } else {
+      this.setState({ max: lift["one_rep_max"] });
+    }
   };
 
   render() {
@@ -63,10 +73,14 @@ class LiftList extends Component {
         </div>
         <DataProvider
           endpoint={this.state.endpoint}
-          render={(data) => (
+          render={(lifts) => (
             <div>
-              <TrainingLoads lift_list={data} lift={this.state.lift} />
-              <Table data={data} />
+              <TrainingLoads
+                lift_list={lifts}
+                lift={this.state.lift}
+                max={this.state.max}
+              />
+              <Table lift_list={lifts} maxLiftSetter={this.maxLiftSetter} />
             </div>
           )}
         />
