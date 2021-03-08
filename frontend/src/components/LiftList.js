@@ -44,6 +44,32 @@ class LiftList extends Component {
   };
 
   render() {
+    const training_loads = this.state.lift ? (
+      <DataProvider
+        endpoint={this.state.endpoint}
+        render={(lifts) => (
+          <div>
+            <TrainingLoads
+              lift_list={lifts}
+              lift={this.state.lift}
+              max={this.state.max}
+            />
+            <Table
+              lift_list={lifts}
+              maxLiftSetter={this.maxLiftSetter}
+              className="is-clickable"
+            />
+          </div>
+        )}
+      />
+    ) : (
+      <DataProvider
+        endpoint={this.state.endpoint}
+        render={(lifts) => (
+          <Table lift_list={lifts} maxLiftSetter={this.maxLiftSetter} />
+        )}
+      />
+    );
     return (
       <div>
         <div className="columns">
@@ -71,19 +97,7 @@ class LiftList extends Component {
             </button>
           </div>
         </div>
-        <DataProvider
-          endpoint={this.state.endpoint}
-          render={(lifts) => (
-            <div>
-              <TrainingLoads
-                lift_list={lifts}
-                lift={this.state.lift}
-                max={this.state.max}
-              />
-              <Table lift_list={lifts} maxLiftSetter={this.maxLiftSetter} />
-            </div>
-          )}
-        />
+        {training_loads}
         <div id="lift-modal" style={{ marginTop: "auto" }}>
           <ModalForm handler={this.liftHandler} />
         </div>

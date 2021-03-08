@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import "./TrainingLoads.scss";
 
 class TrainingLoads extends Component {
   static propTypes = {
@@ -12,12 +13,10 @@ class TrainingLoads extends Component {
     if (this.props.lift_list.length === 0) {
       return <div>Go Lift!</div>;
     }
-    console.log("lift_list = ", this.props.lift_list);
     var max = this.props.lift_list[0]["one_rep_max"];
     if (this.props.max > 0) {
       max = this.props.max;
     } else {
-      console.log("first max of ", max);
       if (
         ["Squat", "Bench", "Deadlift", "Overhead Press"].includes(
           this.props.lift
@@ -25,19 +24,16 @@ class TrainingLoads extends Component {
         max == 0
       ) {
         max = this.props.lift_list[0]["fake_one_rep"];
-        console.log("second max of ", max);
       } else if (max == 0) {
         for (var i = 0; i < this.props.lift_list.length; i++) {
           if (this.props.lift_list[i]["one_rep_max"] > 0) {
             max = this.props.lift_list[i]["one_rep_max"];
-            console.log("third max of ", max);
             break;
           }
         }
       }
     }
-    console.log("sending max of ", max);
-    const training_percent = [95, 90, 85, 80, 75, 70, 65, 60, 55, 50];
+    const training_percent = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95];
     const training_weights = [];
     for (const [index, value] of training_percent.entries()) {
       training_weights.push(
@@ -75,7 +71,7 @@ class TrainingLoads extends Component {
         </div>
       );
     }
-    const training_loads = this.props.lift ? (
+    return (
       <div className="training-loads">
         <div className="level">
           <h2 className="title level-item">Training Loads</h2>
@@ -112,8 +108,7 @@ class TrainingLoads extends Component {
         </div>
         <hr />
       </div>
-    ) : null;
-    return <div>{training_loads}</div>;
+    );
   }
 }
 
