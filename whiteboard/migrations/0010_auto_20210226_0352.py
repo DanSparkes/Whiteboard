@@ -6,50 +6,50 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('whiteboard', '0009_auto_20200125_2224'),
+        ("whiteboard", "0009_auto_20200125_2224"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='repscheme',
-            name='exercise',
+            model_name="repscheme",
+            name="exercise",
         ),
         migrations.RemoveField(
-            model_name='repscheme',
-            name='wod',
+            model_name="repscheme",
+            name="wod",
         ),
         migrations.RemoveField(
-            model_name='repweight',
-            name='rep_scheme',
+            model_name="repweight",
+            name="rep_scheme",
         ),
         migrations.RemoveField(
-            model_name='wod',
-            name='wod_type',
+            model_name="wod",
+            name="wod_type",
         ),
         migrations.RemoveField(
-            model_name='wodscore',
-            name='user',
+            model_name="wodscore",
+            name="user",
         ),
         migrations.RemoveField(
-            model_name='wodscore',
-            name='wod',
+            model_name="wodscore",
+            name="wod",
         ),
         migrations.DeleteModel(
-            name='Exercise',
+            name="Exercise",
         ),
         migrations.DeleteModel(
-            name='RepScheme',
+            name="RepScheme",
         ),
         migrations.DeleteModel(
-            name='RepWeight',
+            name="RepWeight",
         ),
         migrations.DeleteModel(
-            name='WOD',
+            name="WOD",
         ),
         migrations.DeleteModel(
-            name='WodScore',
+            name="WodScore",
         ),
         migrations.DeleteModel(
-            name='WodType',
+            name="WodType",
         ),
     ]

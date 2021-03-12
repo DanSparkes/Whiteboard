@@ -6,28 +6,34 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('whiteboard', '0003_auto_20191104_0319'),
+        ("whiteboard", "0003_auto_20191104_0319"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='lift',
-            name='created_at',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Date Set'),
+            model_name="lift",
+            name="created_at",
+            field=models.DateTimeField(auto_now_add=True, verbose_name="Date Set"),
         ),
         migrations.AlterField(
-            model_name='lift',
-            name='fake_one_rep',
-            field=models.FloatField(blank=True, null=True, verbose_name='Theoretical One Rep'),
+            model_name="lift",
+            name="fake_one_rep",
+            field=models.FloatField(
+                blank=True, null=True, verbose_name="Theoretical One Rep"
+            ),
         ),
         migrations.AlterField(
-            model_name='lift',
-            name='one_rep_max',
-            field=models.IntegerField(blank=True, null=True, verbose_name='One Rep Max'),
+            model_name="lift",
+            name="one_rep_max",
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="One Rep Max"
+            ),
         ),
         migrations.AlterField(
-            model_name='movement',
-            name='name',
-            field=models.CharField(max_length=100, unique=True, verbose_name='Lift Name'),
+            model_name="movement",
+            name="name",
+            field=models.CharField(
+                max_length=100, unique=True, verbose_name="Lift Name"
+            ),
         ),
     ]

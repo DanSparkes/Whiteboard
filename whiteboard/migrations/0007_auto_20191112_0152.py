@@ -6,18 +6,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('whiteboard', '0006_lift_user'),
+        ("whiteboard", "0006_lift_user"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='lift',
-            name='reps',
-            field=models.IntegerField(blank=True, null=True, verbose_name='Reps'),
+            model_name="lift",
+            name="reps",
+            field=models.IntegerField(blank=True, null=True, verbose_name="Reps"),
         ),
         migrations.AddField(
-            model_name='lift',
-            name='weight',
-            field=models.IntegerField(blank=True, null=True, verbose_name='Weight Lifted'),
+            model_name="lift",
+            name="weight",
+            field=models.IntegerField(
+                blank=True, null=True, verbose_name="Weight Lifted"
+            ),
         ),
     ]
