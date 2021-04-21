@@ -7,8 +7,6 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = ["whiteboard"]
-
     operations = [
         migrations.CreateModel(
             name="Lift",

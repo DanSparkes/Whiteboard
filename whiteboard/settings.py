@@ -156,3 +156,5 @@ CSRF_COOKIE_NAME = "XCSRF-TOKEN"
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = ("http://sparkes.ca",)
+
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
