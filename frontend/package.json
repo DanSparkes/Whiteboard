@@ -16,18 +16,18 @@
     "@babel/preset-react": "^7.7.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "css-loader": "^3.6.0",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "weak-key": "^1.0.1",
-    "css-loader": "^3.6.0",
     "style-loader": "^1.2.1",
+    "weak-key": "^1.0.1",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "node-sass": "^4.14.1",
+    "node-sass": "^6.0.1",
     "react": "^16.11.0",
     "react-modal": "^3.12.1",
     "react-select": "^3.0.8",
