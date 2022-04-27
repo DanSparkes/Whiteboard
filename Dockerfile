@@ -67,7 +67,7 @@ COPY templates/ /deploy/code/templates
 RUN true
 COPY .coveragerc /deploy/code/.coveragerc
 RUN true
-COPY db.sqlite3 pytest.ini manage.py /deploy/code/
+COPY pytest.ini manage.py /deploy/code/
 
 
 RUN rm -rf whiteboard/static/*
