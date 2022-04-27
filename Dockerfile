@@ -65,6 +65,7 @@ COPY db.sqlite3 /deploy/code
 COPY pytest.ini /deploy/code
 COPY manage.py /deploy/code
 
+EXPOSE $PORT
 
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
