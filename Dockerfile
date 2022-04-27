@@ -61,9 +61,7 @@ COPY conf/etc/uwsgi/whiteboard.ini /etc/uwsgi/whiteboard.ini
 COPY whiteboard/ /deploy/code/whiteboard
 COPY templates/ /deploy/code/templates
 COPY .coveragerc /deploy/code/.coveragerc
-COPY db.sqlite3 /deploy/code
-COPY pytest.ini /deploy/code
-COPY manage.py /deploy/code
+COPY db.sqlite3 /pytest.ini manage.py /deploy/code/
 
 EXPOSE $PORT
 
