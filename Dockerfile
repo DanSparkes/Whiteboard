@@ -20,7 +20,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     PYTHONHASHSEED=random \
     PIP_NO_CACHE_DIR=off \
-    PIP_DISABLE_PIP_VERSION_CHECK=on
+    PIP_DISABLE_PIP_VERSION_CHECK=on \
+    PORT=8080
 
 # Set work directory
 WORKDIR /deploy/code
@@ -41,8 +42,6 @@ RUN apk add --no-cache --update \
     && apk del build-base python3-dev
 
 COPY conf/etc /etc/
-
-ARG PORT
 
 RUN mkdir -p /etc/nginx/sites-enabled \
     && mkdir -p /run/nginx \
@@ -73,4 +72,4 @@ COPY pytest.ini manage.py /deploy/code/
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/sites-available/app.conf && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
