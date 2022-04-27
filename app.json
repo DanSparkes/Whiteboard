@@ -1,0 +1,6 @@
+{
+    "name": "Whiteboard",
+    "scripts": {
+        "postdeploy": "/deploy/code/scripts/set_port.sh"
+    }
+}

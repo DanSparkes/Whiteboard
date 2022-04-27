@@ -66,7 +66,7 @@ COPY templates/ /deploy/code/templates
 RUN true
 COPY .coveragerc /deploy/code/.coveragerc
 RUN true
-COPY pytest.ini manage.py /deploy/code/
+COPY pytest.ini manage.py app.json /deploy/code/
 
 
 RUN rm -rf whiteboard/static/*
