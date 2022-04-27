@@ -49,9 +49,6 @@ RUN mkdir -p /etc/nginx/sites-enabled \
     && ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf \
     && rm -rf /var/log/nginx/*
 
-EXPOSE $PORT
-RUN echo $PORT
-RUN sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/sites-available/app.conf
 RUN cat /etc/nginx/sites-available/app.conf
 RUN touch /var/log/messages
 RUN mkdir -p /var/log/supervisor/conf.d
@@ -60,8 +57,10 @@ COPY whiteboard/scripts/configure.sh /deploy/code/scripts/configure.sh
 RUN chmod +x /deploy/code/scripts/configure.sh
 
 COPY conf/etc/supervisor/conf.d/uwsgi.conf /etc/supervisor/conf.d/uwsgi.conf
+RUN true
 COPY conf/etc/uwsgi/whiteboard.ini /etc/uwsgi/whiteboard.ini
 
+RUN true
 COPY whiteboard/ /deploy/code/whiteboard
 RUN true
 COPY templates/ /deploy/code/templates
