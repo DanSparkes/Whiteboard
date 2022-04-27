@@ -72,4 +72,4 @@ COPY pytest.ini manage.py /deploy/code/
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
 
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/sites-available/app.conf && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+CMD sed -i -e 's|PORT|$PORT|g' /etc/nginx/sites-available/app.conf && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
