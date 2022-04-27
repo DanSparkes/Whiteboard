@@ -8,7 +8,7 @@ RUN apk add --no-cache --update \
 
 COPY frontend/package.json /deploy/code/frontend/package.json
 WORKDIR /deploy/code/frontend
-RUN npm install && npm rebuild node-sass
+RUN npm install && npm rebuild sass
 COPY frontend /deploy/code/frontend
 RUN npm run build
 
