@@ -48,7 +48,6 @@ RUN mkdir -p /etc/nginx/sites-enabled \
     && ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf \
     && rm -rf /var/log/nginx/*
 
-RUN cat /etc/nginx/sites-available/app.conf
 RUN touch /var/log/messages
 RUN mkdir -p /var/log/supervisor/conf.d
 
