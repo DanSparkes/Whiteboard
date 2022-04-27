@@ -49,6 +49,7 @@ RUN mkdir -p /etc/nginx/sites-enabled \
     && rm -rf /var/log/nginx/*
 
 RUN sed -i 's|\$PORT|$PORT|g' /etc/nginx/sites-available/app.conf
+RUN cat /etc/nginx/sites-available/app.conf
 RUN touch /var/log/messages
 RUN mkdir -p /var/log/supervisor/conf.d
 
