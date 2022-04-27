@@ -52,8 +52,8 @@ RUN cat /etc/nginx/sites-available/app.conf
 RUN touch /var/log/messages
 RUN mkdir -p /var/log/supervisor/conf.d
 
-COPY whiteboard/scripts/configure.sh /deploy/code/scripts/configure.sh
-RUN chmod +x /deploy/code/scripts/configure.sh
+COPY whiteboard/scripts /deploy/code/scripts
+RUN chmod +x /deploy/code/scripts/*
 
 COPY conf/etc/supervisor/conf.d/uwsgi.conf /etc/supervisor/conf.d/uwsgi.conf
 RUN true
