@@ -42,13 +42,15 @@ RUN apk add --no-cache --update \
 
 COPY conf/etc /etc/
 
+ARG PORT
 
 RUN mkdir -p /etc/nginx/sites-enabled \
     && mkdir -p /run/nginx \
     && ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf \
     && rm -rf /var/log/nginx/*
 
-RUN sed -i 's|\$PORT|$PORT|g' /etc/nginx/sites-available/app.conf
+RUN echo $PORT
+RUN sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/sites-available/app.conf
 RUN cat /etc/nginx/sites-available/app.conf
 RUN touch /var/log/messages
 RUN mkdir -p /var/log/supervisor/conf.d
