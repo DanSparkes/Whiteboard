@@ -49,6 +49,7 @@ RUN mkdir -p /etc/nginx/sites-enabled \
     && ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf \
     && rm -rf /var/log/nginx/*
 
+EXPOSE $PORT
 RUN echo $PORT
 RUN sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/sites-available/app.conf
 RUN cat /etc/nginx/sites-available/app.conf
@@ -62,11 +63,12 @@ COPY conf/etc/supervisor/conf.d/uwsgi.conf /etc/supervisor/conf.d/uwsgi.conf
 COPY conf/etc/uwsgi/whiteboard.ini /etc/uwsgi/whiteboard.ini
 
 COPY whiteboard/ /deploy/code/whiteboard
+RUN true
 COPY templates/ /deploy/code/templates
+RUN true
 COPY .coveragerc /deploy/code/.coveragerc
 COPY db.sqlite3 /pytest.ini manage.py /deploy/code/
 
-EXPOSE $PORT
 
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
