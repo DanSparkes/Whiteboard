@@ -71,6 +71,6 @@ COPY pytest.ini manage.py /deploy/code/
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
 
-EXPOSE $PORT
+RUN echo $PORT
 
 CMD /bin/sh -c "envsubst '\$PORT' < /etc/nginx/sites-available/app.conf > /etc/nginx/sites-available/app.conf" && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
