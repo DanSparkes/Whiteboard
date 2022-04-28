@@ -71,4 +71,6 @@ COPY pytest.ini manage.py /deploy/code/
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
 
+EXPOSE $PORT
+
 CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
