@@ -73,4 +73,4 @@ COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
 
 RUN echo $PORT
 
-CMD sh -c "envsubst '\$PORT' < /etc/nginx/sites-available/app.conf > /etc/nginx/sites-available/app.conf.tmp" && cp -f /etc/nginx/sites-available/app.conf.tmp /etc/nginx/sites-available/app.conf && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+CMD sh -c "envsubst < /etc/nginx/sites-available/app.conf > /etc/nginx/sites-available/app.conf.tmp" && cp -f /etc/nginx/sites-available/app.conf.tmp /etc/nginx/sites-available/app.conf && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
