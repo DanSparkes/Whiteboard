@@ -13,7 +13,7 @@ shell: django-settings-set build
 	docker run --rm -it -e "DJANGO_SETTINGS_MODULE=whiteboard.settings" $(NAME):$(VERSION) sh
 
 run: django-settings-set build
-	docker run --rm -it   -e "DJANGO_SETTINGS_MODULE=whiteboard.settings" \
+	docker run --rm -it   -e "DJANGO_SETTINGS_MODULE=whiteboard.settings" -e "PORT=8080" \
 	-e "APP_ENV=local" -p 80:8080 -p 443:443 $(NAME):$(VERSION) /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
 
 audit:
