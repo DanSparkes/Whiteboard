@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.13
 
 ARG react_app_build_env=local
 
@@ -13,7 +13,7 @@ COPY frontend /deploy/code/frontend
 RUN npm run build
 
 # Pull base image
-FROM alpine:3.11
+FROM alpine:3.13
 
 # Set environment varibles
 ENV PYTHONDONTWRITEBYTECODE=1 \
