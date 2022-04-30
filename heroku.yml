@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: /deploy/code/whiteboard/scripts/set_port.sh && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
+  web: PORT=$PORT /deploy/code/whiteboard/scripts/set_port.sh && /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
