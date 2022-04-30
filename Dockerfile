@@ -49,8 +49,6 @@ RUN mkdir -p /etc/nginx/sites-enabled \
     && rm -rf /var/log/nginx/*
 
 RUN touch /var/log/messages \
-    && touch touch /deploy/code/requests.log \
-    && touch touch /deploy/code/errors.log \
     && mkdir -p /var/log/supervisor/conf.d
 
 COPY whiteboard/scripts /deploy/code/scripts
