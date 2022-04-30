@@ -185,7 +185,7 @@ LOGGING = {
         "file": {
             "level": "DEBUG",
             "class": "logging.FileHandler",
-            "filename": f"{PROJECT_ROOT}/whiteboard.log",
+            "filename": f"{BASE_DIR}/whiteboard.log",
             "formatter": "verbose",
         },
     },
