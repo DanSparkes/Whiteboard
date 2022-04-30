@@ -30,6 +30,7 @@ COPY requirements.txt /deploy/code/
 # Install dependencies
 RUN apk add --no-cache --update \
     python3 build-base python3-dev \
+    g++ gcc postgresql-dev \
     nginx supervisor openssl ca-certificates \
     uwsgi-python3 libjpeg-turbo-dev zlib-dev \
     && python3 -m ensurepip \
