@@ -48,8 +48,10 @@ RUN mkdir -p /etc/nginx/sites-enabled \
     && ln -s /etc/nginx/sites-available/app.conf /etc/nginx/sites-enabled/app.conf \
     && rm -rf /var/log/nginx/*
 
-RUN touch /var/log/messages
-RUN mkdir -p /var/log/supervisor/conf.d
+RUN touch /var/log/messages \
+    && touch touch /deploy/code/requests.log \
+    && touch touch /deploy/code/errors.log \
+    && mkdir -p /var/log/supervisor/conf.d
 
 COPY whiteboard/scripts /deploy/code/scripts
 RUN chmod +x /deploy/code/scripts/*
@@ -70,5 +72,6 @@ COPY pytest.ini manage.py /deploy/code/
 
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
+RUN PYTHONPATH=/code DJANGO_SETTINGS_MODULE=whiteboard.settings SECRET_KEY=collectstatic django-admin collectstatic --noinput
 
 CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf
