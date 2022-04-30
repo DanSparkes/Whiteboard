@@ -1,9 +1,9 @@
 build:
   docker:
     web: Dockerfile
-# release:
-#   command:
-#     - python3 manage.py
-#   image: web
+release:
+  command:
+    - python3 manage.py collectstatic --noinput
+  image: web
 run:
   web: uwsgi --master /etc/uwsgi/whiteboard.ini
