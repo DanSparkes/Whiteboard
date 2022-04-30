@@ -2,7 +2,7 @@ django==4.0.4
 djangorestframework==3.12.2
 django-cors-headers==3.7.0
 django-environ==0.4.5
-psycopg==3.0.12
+psycopg2==2.9.3
 pytz==2022.1
 secure==0.2.1
 tzdata==2022.1
