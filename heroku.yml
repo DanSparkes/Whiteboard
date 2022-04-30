@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: python3 /deploy/code/manage.py runserver 0.0.0.0:$PORT
+  web: uwsgi --master /etc/uwsgi/whiteboard.ini
