@@ -1,8 +1,15 @@
 version: "3"
 services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=whiteboard
+      - POSTGRES_USER=whiteboard
+      - POSTGRES_PASSWORD=whiteboard
+    ports:
+      - "5432:5432"
   web:
     build: .
-    restart: always
     volumes:
       - $PWD:/deploy/code
     command: python3 /deploy/code/manage.py runserver 0.0.0.0:8080
@@ -13,3 +20,5 @@ services:
       - "80:8080"
       - "443:443"
       - "5679:5679"
+    depends_on:
+      - db

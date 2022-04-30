@@ -3,7 +3,7 @@ build:
     web: Dockerfile
 release:
   command:
-    - python3 manage.py collectstatic --noinput
+    - python3 manage.py collectstatic --noinput && python3 manage.py migrate
   image: web
 run:
   web: uwsgi --master /etc/uwsgi/whiteboard.ini
