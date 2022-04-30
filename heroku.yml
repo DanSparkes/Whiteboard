@@ -2,4 +2,4 @@ build:
   docker:
     web: Dockerfile
 run:
-  web: uwsgi --master --check-static /deploy/code/whiteboard/static /etc/uwsgi/whiteboard.ini
+  web: uwsgi --master --check-static /deploy/code/whiteboard/ /etc/uwsgi/whiteboard.ini
