@@ -6,4 +6,4 @@ release:
     - python3 manage.py migrate
   image: web
 run:
-  web: uwsgi --master /etc/uwsgi/whiteboard.ini && python3 manage.py collectstatic --noinput
+  web: uwsgi --master --logger file:/deploy/code/errors.log /etc/uwsgi/whiteboard.ini
