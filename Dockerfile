@@ -72,6 +72,6 @@ COPY pytest.ini manage.py /deploy/code/
 
 RUN rm -rf whiteboard/static/*
 COPY --from=0 /deploy/code/frontend/build /deploy/code/whiteboard/static
-RUN PYTHONPATH=/deploy/code DJANGO_SETTINGS_MODULE=whiteboard.settings SECRET_KEY=collectstatic django-admin collectstatic --noinput
+RUN PYTHONPATH=/deploy/code DJANGO_SETTINGS_MODULE=whiteboard.settings django-admin collectstatic --noinput
 
 CMD /usr/bin/supervisord -c /etc/supervisor/conf.d/supervisord.conf

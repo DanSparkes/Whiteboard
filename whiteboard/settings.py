@@ -21,6 +21,12 @@ env = environ.Env(
     CSRF_COOKIE_SECURE=(bool, True),
     SECURE_BROWSER_XSS_FILTER=(bool, True),
     SECURE_CONTENT_TYPE_NOSNIFF=(bool, True),
+    SECRET_KEY=(str, ":D"),
+    DB_HOST=(str, "db"),
+    DB_NAME=(str, "whiteboard"),
+    DB_USER=(str, "whiteboard"),
+    DB_PASSWORD=(str, "whiteboard"),
+    DB_PORT=(int, 5432),
 )
 
 # reading .env file
