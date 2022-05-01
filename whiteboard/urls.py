@@ -27,4 +27,5 @@ urlpatterns = [
         r"api/lifts/(?P<liftname>[\w|\W]+)/$", LiftList.as_view(), name="single_lift"
     ),
     path("api/movements/", MovementList.as_view(), name="movement_list"),
+    re_path(r"^ht/", include("health_check.urls")),
 ]
