@@ -18,7 +18,7 @@ class TrainingLoads extends Component {
       max = this.props.max;
     } else {
       if (
-        ["Squat", "Bench", "Deadlift", "Overhead Press"].includes(
+        ["Squat", "Bench", "Deadlift", "Strict Press"].includes(
           this.props.lift
         ) &&
         max == 0
