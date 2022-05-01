@@ -66,7 +66,7 @@ class TrainingLoads extends Component {
           <div>
             <p className="heading">{value["reps"]} Reps At</p>
             <p className="title">
-              {Math.round(max * (value["percentage"] / 100))}
+              {Math.round((max * (value["percentage"] / 100)) / 5) * 5}
             </p>
           </div>
         </div>
