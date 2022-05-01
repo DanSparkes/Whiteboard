@@ -13,7 +13,9 @@ services:
     volumes:
       - $PWD:/deploy/code
     command: python3 /deploy/code/manage.py runserver 0.0.0.0:8080
+    # command: uwsgi --master /etc/uwsgi/whiteboard.ini
     environment:
+      - PORT=8080
       - DJANGO_SETTINGS_MODULE=whiteboard.settings
       - APP_ENV=local
     ports:
