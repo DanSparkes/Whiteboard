@@ -40,11 +40,12 @@ class TrainingLoads extends Component {
         <div className="level-item has-text-centered" key={index}>
           <div>
             <p className="heading">{value}%</p>
-            <p className="title">{Math.round(max * (value / 100))}</p>
+            <p className="title">{Math.round((max * (value / 100)) / 5) * 5}</p>
           </div>
         </div>
       );
     }
+
     const attempts = [
       { reps: 10, percentage: 40 },
       { reps: 10, percentage: 50 },
