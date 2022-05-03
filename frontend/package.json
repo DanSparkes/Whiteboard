@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode development ./src/index.js --output-path ./build/frontend/main.js",
-    "build": "webpack --mode production ./src/index.js --output-path ./build/frontend/main.js"
+    "dev": "webpack --mode development ./src/index.js --output-path ./build/frontend",
+    "build": "webpack --mode production ./src/index.js --output-path ./build/frontend"
   },
   "keywords": [],
   "author": "",

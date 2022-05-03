@@ -28,7 +28,7 @@ regenerate-package-lock:
 
 build-frontend:
 	docker run --rm -it -v $(shell pwd)/frontend:/frontend -w /frontend node:dubnium-alpine npm run build
-	cp ./frontend/build/frontend/main.js ./whiteboard/static/frontend/main.js
+	cp -rf ./frontend/build/frontend/main.js ./whiteboard/static/frontend/
 	cp -rf ./frontend/build/frontend/* ./whiteboard/static
 
 test-python: django-settings-set build
