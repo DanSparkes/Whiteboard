@@ -6,7 +6,7 @@ django-environ==0.4.5
 secure==0.2.1
 django-axes==6.1.0
 
-black==20.8b1
+black==24.3.0
 pytest==6.2.2
 pytest-django==4.1.0
 pytest-cov==2.11.1
